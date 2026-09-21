@@ -4,8 +4,55 @@
 <meta charset="UTF-8">
 <title>Pixel Drawing</title>
 <script type="text/javascript" src="drawstuff.js"></script>
+<style>
+    body { font-family: sans-serif; }
+    fieldset { display: inline-block; vertical-align: top; margin: 4px; }
+    legend { font-weight: bold; }
+    label { display: inline-block; width: 1.2em; }
+    input[type="number"] { width: 5.5em; }
+    fieldset div.note { max-width: 14em; font-size: 0.8em; color: #555; margin-top: 4px; }
+    #statusMsg { color: #b00; font-weight: bold; min-height: 1.2em; }
+</style>
 </head>
 <body onload="main();">
 <canvas id="viewport" width="512" height="512"></canvas>
+<div id="statusMsg"></div>
+
+<fieldset>
+    <legend>Canvas Size</legend>
+    <label>W</label><input type="number" id="canvasWidthInput" value="512" min="1" step="1"><br>
+    <label>H</label><input type="number" id="canvasHeightInput" value="512" min="1" step="1">
+</fieldset>
+
+<fieldset>
+    <legend>Eye</legend>
+    <label>X</label><input type="number" id="eyeX" value="0.5" step="0.1"><br>
+    <label>Y</label><input type="number" id="eyeY" value="0.5" step="0.1"><br>
+    <label>Z</label><input type="number" id="eyeZ" value="-0.5" step="0.1">
+</fieldset>
+
+<fieldset>
+    <legend>Look At (direction vector, not a target point)</legend>
+    <label>X</label><input type="number" id="lookAtX" value="0" step="0.1"><br>
+    <label>Y</label><input type="number" id="lookAtY" value="0" step="0.1"><br>
+    <label>Z</label><input type="number" id="lookAtZ" value="1" step="0.1">
+</fieldset>
+
+<fieldset>
+    <legend>View Up</legend>
+    <label>X</label><input type="number" id="viewUpX" value="0" step="0.1"><br>
+    <label>Y</label><input type="number" id="viewUpY" value="1" step="0.1"><br>
+    <label>Z</label><input type="number" id="viewUpZ" value="0" step="0.1">
+</fieldset>
+
+<fieldset>
+    <legend>View Window (view space)</legend>
+    <label>L</label><input type="number" id="winLeft" value="-0.5" step="0.1"><br>
+    <label>R</label><input type="number" id="winRight" value="0.5" step="0.1"><br>
+    <label>B</label><input type="number" id="winBottom" value="-0.5" step="0.1"><br>
+    <label>T</label><input type="number" id="winTop" value="0.5" step="0.1">
+    <div class="note">L/R/B/T auto-fit to the canvas aspect ratio (to avoid stretching) until you edit one of them by hand.</div>
+</fieldset>
+
 </body>
 </html>
